@@ -126,7 +126,7 @@ resource "aws_instance" "windows-server" {
   vpc_security_group_ids      = [aws_security_group.aws-windows-sg.id]
   source_dest_check           = false
   key_name                    = aws_key_pair.key_pair.key_name
-  user_data                   = data.template_file.windows-userdata.rendered
+  user_data                   = data.template_file.windows_userdata.rendered
   associate_public_ip_address = var.windows_associate_public_ip_address
 
   # root disk
@@ -153,7 +153,7 @@ resource "aws_instance" "windows-server" {
 
 # Create Elastic IP for the EC2 instance
 resource "aws_eip" "windows-eip" {
-  vpc  = true
+  vpc = true
   tags = {
     Name = "windows-eip"
   }
