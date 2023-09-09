@@ -2,7 +2,7 @@
 variable "aws_az" {
   type        = string
   description = "AWS AZ"
-  default     = "us-east-1"
+  default     = "us-east-1a"
 }
 # VPC Variables
 variable "vpc_cidr" {
