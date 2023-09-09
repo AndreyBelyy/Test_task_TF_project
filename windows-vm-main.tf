@@ -146,8 +146,8 @@ resource "aws_instance" "windows-server" {
   }
 
   tags = {
-    Name        = "windows-server-vm"
-    Environment = var.app_environment
+    Name = "windows-server-vm"
+    # Environment = var.app_environment
   }
 }
 
