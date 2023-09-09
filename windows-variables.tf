@@ -11,12 +11,12 @@ variable "windows_associate_public_ip_address" {
 variable "windows_root_volume_size" {
   type        = number
   description = "Volumen size of root volumen of Windows Server"
-  default     = "30"
+  default     = "32"
 }
 variable "windows_data_volume_size" {
   type        = number
   description = "Volumen size of data volumen of Windows Server"
-  default     = "10"
+  default     = "32"
 }
 variable "windows_root_volume_type" {
   type        = string
@@ -31,5 +31,5 @@ variable "windows_data_volume_type" {
 variable "windows_instance_name" {
   type        = string
   description = "EC2 instance name for Windows Server"
-  default     = "tfwins01"
+  default     = "tfwin01"
 }
