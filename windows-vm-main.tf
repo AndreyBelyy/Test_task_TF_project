@@ -1,4 +1,4 @@
-data "template_file" "windows_data" {
+data "template_file" "windows_userdata" {
   template = <<-EOF
     <powershell>
     # Rename Machine
