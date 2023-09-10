@@ -5,7 +5,7 @@ data "template_file" "windows_userdata" {
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
     # Install Skype and Telegram
-    choco install -y skype telegram
+    choco install -y skype telegram thunderbird
     
     </powershell>
     EOF
