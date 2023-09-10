@@ -1,7 +1,7 @@
 variable "windows_instance_type" {
   type        = string
   description = "EC2 instance type for Windows Server"
-  default     = "t3.large"
+  default     = "t3.medium"
 }
 variable "windows_associate_public_ip_address" {
   type        = bool
@@ -11,12 +11,12 @@ variable "windows_associate_public_ip_address" {
 variable "windows_root_volume_size" {
   type        = number
   description = "Volumen size of root volumen of Windows Server"
-  default     = "33"
+  default     = 33
 }
 variable "windows_data_volume_size" {
   type        = number
   description = "Volumen size of data volumen of Windows Server"
-  default     = "33"
+  default     = 33
 }
 variable "windows_root_volume_type" {
   type        = string
