@@ -1,23 +1,12 @@
 data "template_file" "windows_userdata" {
-  template = <<-EOF
+  template = <<EOF
     <powershell>
-    # Rename Machine
-    Rename-Computer -NewName "${var.windows_instance_name}" -Force;
-    
-    # New user
-    New-LocalUser -Name 'Tomas' -Description 'Description of this account.' -Password 'Edison'
-    
-    # Add to RDP
-    Add-LocalGroupMember -Group "Remote Desktop Users" -Member "Tomas"
-
     # Install Chocolatey (package manager for Windows)
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
     # Install Skype and Telegram
     choco install -y skype telegram
     
-    # Restart machine
-    shutdown -r -t 10;
     </powershell>
     EOF
 }
@@ -37,7 +26,7 @@ resource "aws_security_group" "aws-windows-sg" {
   ingress {
     from_port   = 3389
     to_port     = 3389
-    protocol    = "tcp"
+    protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow incoming RDP connections"
   }
@@ -71,12 +60,13 @@ resource "aws_security_group" "aws-windows-sg" {
     cidr_blocks = ["0.0.0.0/0"] # Specific IP addresses recommended
     description = "Allow incoming HTTP connections"
   }
-  egress {
+  /* egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+*/
   egress {
     from_port   = 80
     to_port     = 80
@@ -87,7 +77,7 @@ resource "aws_security_group" "aws-windows-sg" {
   egress {
     from_port   = 3389
     to_port     = 3389
-    protocol    = "tcp"
+    protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow outcoming RDP connections"
   }
@@ -146,7 +136,7 @@ resource "aws_instance" "windows-server" {
   }
 
   tags = {
-    Name = "windows-server-vm"
+    Name = "Windows_10"
     # Environment = var.app_environment
   }
 }
