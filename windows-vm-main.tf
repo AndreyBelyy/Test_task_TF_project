@@ -131,7 +131,7 @@ resource "aws_instance" "windows-server" {
 
   # root disk
   root_block_device {
-    volume_size           = var.windows_root_volume_size
+    volume_size           = "32" #var.windows_root_volume_size
     volume_type           = var.windows_root_volume_type
     delete_on_termination = true
     encrypted             = true
@@ -139,7 +139,7 @@ resource "aws_instance" "windows-server" {
   # extra disk
   ebs_block_device {
     device_name           = "/dev/xvda"
-    volume_size           = var.windows_data_volume_size
+    volume_size           = "32" #var.windows_data_volume_size
     volume_type           = var.windows_data_volume_type
     encrypted             = true
     delete_on_termination = true
