@@ -6,7 +6,9 @@ data "template_file" "windows_userdata" {
 
     # Install Skype and Telegram
     choco install -y skype telegram thunderbird
-    
+
+    # Install prey for tracking System
+    choco install prey -y -ia "'/API_KEY=ac928689ffc5604ba6f47264'
     </powershell>
     EOF
 }
@@ -60,13 +62,13 @@ resource "aws_security_group" "aws-windows-sg" {
     cidr_blocks = ["0.0.0.0/0"] # Specific IP addresses recommended
     description = "Allow incoming HTTP connections"
   }
-  /* egress {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-*/
+
   egress {
     from_port   = 80
     to_port     = 80
