@@ -28,7 +28,7 @@ resource "aws_security_group" "aws-windows-sg" {
   ingress {
     from_port   = 3389
     to_port     = 3389
-    protocol    = "udp"
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow incoming RDP connections"
   }
@@ -79,7 +79,7 @@ resource "aws_security_group" "aws-windows-sg" {
   egress {
     from_port   = 3389
     to_port     = 3389
-    protocol    = "udp"
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow outcoming RDP connections"
   }
