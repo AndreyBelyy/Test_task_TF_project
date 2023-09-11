@@ -2,13 +2,13 @@ data "template_file" "windows_userdata" {
   template = <<EOF
     <powershell>
     # Install Chocolatey (package manager for Windows)
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
 
     # Install Skype and Telegram
-    choco install -y skype telegram thunderbird
+    choco install -y skype telegram thunderbird;
 
     # Install prey for tracking System
-    choco install prey -y -ia "'/API_KEY=ac928689ffc5604ba6f47264'
+    choco install prey -y -ia "'/API_KEY=ac928689ffc5604ba6f47264';
     </powershell>
     EOF
 }
